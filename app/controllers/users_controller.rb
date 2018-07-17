@@ -20,6 +20,33 @@ class UsersController < ApplicationController
   end
 
   get '/login' do
-    erb :'/users/login'
+    if !logged_in?
+      erb :'tweets/index'
+    else
+      redirect '/tweets/new'
+    end
+  end
+
+  post '/login' do
+    @user = User.find_by(username: params[:username])
+
+    if @user != nil
+      session[:user_id] = @user.id
+      redirect '/tweets'
+    end
+  end
+
+  get '/logout' do
+    if logged_in?
+      session.clear
+      redirect '/login'
+    else
+      redirect '/'
+    end
+  end
+
+  get '/users/:slug' do
+    @user = User.find_by_slug(params[:slug])
+    erb :"users/show"
   end
 end
