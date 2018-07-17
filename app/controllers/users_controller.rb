@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     if !params.values.include? ""
       @user = User.create(username: params[:username], email: params[:email], password: params[:password])
       session[:user_id] = @user.id
-      <%=@user.name%><% end %>
       redirect '/tweets'
     else
       redirect '/signup'
