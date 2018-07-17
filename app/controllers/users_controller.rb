@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     else
       redirect '/signup'
     end
+    binding.pry
   end
 
   get '/login' do
