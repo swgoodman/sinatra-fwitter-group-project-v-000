@@ -24,5 +24,6 @@ class UsersController < ApplicationController
       erb :'tweets/index'
     else
       redirect '/tweets/new'
+    end
   end
 end
