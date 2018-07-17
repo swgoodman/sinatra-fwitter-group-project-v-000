@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
 
   get '/signup' do
     if !session[:user_id]
@@ -17,5 +17,9 @@ class UsersController < ApplicationController
     else
       redirect '/signup'
     end
+  end
+
+  get '/login' do
+    erb :'/users/login'
   end
 end
